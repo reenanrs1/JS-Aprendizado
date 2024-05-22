@@ -1,0 +1,40 @@
+Links Uteis - https://web.dio.me/lives/como-criar-e-publicar-seu-primeiro-servidor-com-nodejs-getting-started-7
+
+
+
+Hard Skill
+- Linguagens de Programação
+- Arquiteturas de Sistemas
+- Bancos de dados
+- Stacks de Desenvolvimento
+- Ferramentas
+
+Soft Skills
+- Trabalho em Equipe
+- Pensamento Crítico
+- Gerenciamento do Tempo
+- Comunicação
+- Liderança
+
+---------------------------------------------------------------------------------
+Boas Praticas :
+utilizar === invés de == para não ocorrer problema do JS validar string com int/float
+Booleano - Sempre inserir a variavel com is no começo 
+
+---------------------------------------------------------------------------------
+
+Entendendo Algoritimos e Fluxogramas.
+
+Algoritimos >> Ordem Lógica para resolver o problema (NÃO PASSE POR CIMA DESSA ETAPA)
+Fluxograma >> Representação Visual de uma sequencia de ações lógicas.
+
+---------------------------------------------------------------------------------
+Variaveis = let / const
+let = ela é uma variavel, dentro do código você pode muda-la definindo outro valor para ela
+const = não varia, ao definir o primeiro valor não pode-se altera-la no código
+
+.toFixed(2) após a variavel, faz com que ela arrendode as casas decimais para 2 casas, evitando numeros quebrados
+
+Caso deseje negar um booleano você pode inserir o "!"antes da variavel.
+
+Para algo ser diferente, utiliza-se != // caso queira indicar um OU outro utiliza-se && e caso queira se um e outro utilizase ||
