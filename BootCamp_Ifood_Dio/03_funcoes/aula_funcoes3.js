@@ -17,4 +17,4 @@ function pagamento(preco, formaPagamento){
 let preco = 10;
 let formaPagamento = '2x';
 
-console.log(pagamento(preco, formaPagamento));
+console.log(pagamento(preco, formaPagamento))
