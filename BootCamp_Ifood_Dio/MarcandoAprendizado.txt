@@ -38,3 +38,7 @@ const = não varia, ao definir o primeiro valor não pode-se altera-la no códig
 Caso deseje negar um booleano você pode inserir o "!"antes da variavel.
 
 Para algo ser diferente, utiliza-se != // caso queira indicar um OU outro utiliza-se && e caso queira se um e outro utilizase ||
+
+const aluno = {nome: 'Renan'} === Objeto literal, não precisa de classe
+
+arrays === lista // const alunos = [' ', ' ', ' '] 
