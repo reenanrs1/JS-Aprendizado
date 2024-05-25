@@ -1,6 +1,7 @@
 Links Uteis - https://web.dio.me/lives/como-criar-e-publicar-seu-primeiro-servidor-com-nodejs-getting-started-7
+https://web.dio.me/course/materiais-complementares-aprenda-a-programar-do-zero-com-javascript/learning/b25d443e-c193-4a3a-b5df-c662e36076a4?back=/track/formacao-javascript-developer
 
-
+https://www.w3schools.com/css/css3_mediaqueries_ex.asp
 
 Hard Skill
 - Linguagens de Programação
@@ -42,3 +43,12 @@ Para algo ser diferente, utiliza-se != // caso queira indicar um OU outro utiliz
 const aluno = {nome: 'Renan'} === Objeto literal, não precisa de classe
 
 arrays === lista // const alunos = [' ', ' ', ' '] 
+
+-------------------------------------------------------------------------------------
+
+Sempre utilizar normalize para CSS para ficar igual em todos os tipos de navegadores:
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+Quando for realizar uma tela responsiva, utilizar a técnica Mobile First, 
+
+CSS - Quando for realizar, pode-se fazer diretamente no DevTools para facilitar a visualização e depois passar para o código.
