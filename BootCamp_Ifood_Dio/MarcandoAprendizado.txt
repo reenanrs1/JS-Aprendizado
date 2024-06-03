@@ -52,3 +52,7 @@ Sempre utilizar normalize para CSS para ficar igual em todos os tipos de navegad
 Quando for realizar uma tela responsiva, utilizar a técnica Mobile First, 
 
 CSS - Quando for realizar, pode-se fazer diretamente no DevTools para facilitar a visualização e depois passar para o código.
+
+HTTP-SERVER para iniciar o servidor
+
+Fetch-API para request
