@@ -24,49 +24,66 @@ document.getElementById('cnpjForm').addEventListener('submit', function(event) {
         })
 
         .then((jsonBody) => {
-            
-            const cnpjData = {
-                razaoSocial: jsonBody.razao_social,
-                porte: jsonBody.porte.descricao,
-                naturezaJuridica: jsonBody.natureza_juridica.descricao,
-                cnpj: jsonBody.estabelecimento.cnpj,
-                nomeFantasia: jsonBody.estabelecimento.nome_fantasia,
-                situacaoCadastral: jsonBody.estabelecimento.situacao_cadastral,
-                logradouro: `${jsonBody.estabelecimento.tipo_logradouro} ${jsonBody.estabelecimento.logradouro}, ${jsonBody.estabelecimento.numero}`,
-                bairro: jsonBody.estabelecimento.bairro,
-                cep: jsonBody.estabelecimento.cep,
-                telefone: `(${jsonBody.estabelecimento.ddd1}) ${jsonBody.estabelecimento.telefone1}`,
-                email: jsonBody.estabelecimento.email,
-                inscricoesEstaduais: 'N/A' 
-            };
-        
-            if (jsonBody.estabelecimento.inscricoes_estaduais.length > 0) {
+            const estabelecimento = jsonBody.estabelecimento;
+            if (estabelecimento) {
+                const cnpjData = {
+                    razaoSocial: jsonBody.razao_social,
+                    porte: jsonBody.porte.descricao,
+                    naturezaJuridica: jsonBody.natureza_juridica.descricao,
+                    cnpj: estabelecimento.cnpj,
+                    nomeFantasia: estabelecimento.nome_fantasia,
+                    situacaoCadastral: estabelecimento.situacao_cadastral,
+                    logradouro: `${estabelecimento.tipo_logradouro} ${estabelecimento.logradouro}, ${estabelecimento.numero}`,
+                    bairro: estabelecimento.bairro,
+                    cep: estabelecimento.cep,
+                    telefone: `(${estabelecimento.ddd1}) ${estabelecimento.telefone1}`,
+                    email: estabelecimento.email,
+                    inscricoesEstaduais: 'N/A' 
+                };
                 
-                cnpjData.inscricoesEstaduais = jsonBody.estabelecimento.inscricoes_estaduais
-                    .map((inscricao) => inscricao.inscricao_estadual)
-                    .join('<br>'); 
+                if (estabelecimento.inscricoes_estaduais && estabelecimento.inscricoes_estaduais.length > 0) {
+                    cnpjData.inscricoesEstaduais = estabelecimento.inscricoes_estaduais
+                        .map((inscricao) => {
+                            const ativoStyle = inscricao.ativo ? 'color: green;' : 'color: red;'; // Define a cor verde para 'Ativo' e vermelho para 'Não ativo'
+                            const ativoText = inscricao.ativo ? 'Ativo' : 'Não ativo';
+                            return `
+                                <p style="margin-bottom: 10px;">
+                                    <strong style="font-weight: bold;">Inscrição Estadual:</strong> ${inscricao.inscricao_estadual}<br>
+                                    <strong style="font-weight: bold;">Estado:</strong> ${inscricao.estado.nome}<br>
+                                    <strong style="font-weight: bold; ${ativoStyle}">Ativo:</strong> <span style="${ativoStyle}">${ativoText}</span>
+                                </p>
+                            `;
+                        })
+                        .join(''); 
+                }
+                
+                const resultContainer = document.getElementById('cnpjResult');
+                resultContainer.innerHTML = `
+                    <h3>Resultados da Consulta de CNPJ</h3>
+                    <p><strong>CNPJ:</strong> ${cnpjData.cnpj}</p>
+                    <p><strong>Razão Social:</strong> ${cnpjData.razaoSocial}</p>
+                    <p><strong>Nome Fantasia:</strong> ${cnpjData.nomeFantasia} </p>
+                    <p><strong>Porte:</strong> ${cnpjData.porte}</p>
+                    <p><strong>Natureza Jurídica:</strong> ${cnpjData.naturezaJuridica}</p>
+                    <p><strong>Situação Cadastral:</strong> ${cnpjData.situacaoCadastral}</p>
+                    <p><strong>Logradouro:</strong> ${cnpjData.logradouro}</p>
+                    <p><strong>Bairro:</strong> ${cnpjData.bairro}</p>
+                    <p><strong>CEP:</strong> ${cnpjData.cep}</p>
+                    <p><strong>Telefone:</strong> ${cnpjData.telefone}</p>
+                    <p><strong>Email:</strong> ${cnpjData.email}</p>
+                    <p><strong>Inscrições Estaduais:</strong><br>${cnpjData.inscricoesEstaduais}</p>
+
+                `;
+            } else {
+                const resultContainer = document.getElementById('cnpjResult');
+                resultContainer.innerHTML = `
+                    <h3>Erro na Consulta</h3>
+                    <p>Não foi possível encontrar informações sobre o estabelecimento.</p>
+                `;
             }
-        
-       
-
-
-            const resultContainer = document.getElementById('cnpjResult');
-            resultContainer.innerHTML = `
-                <h3>Resultados da Consulta de CNPJ</h3>
-                <p><strong>CNPJ:</strong> ${cnpjData.cnpj}</p>
-                <p><strong>Razão Social:</strong> ${cnpjData.razaoSocial}</p>
-                <p><strong>Nome Fantasia:</strong> ${cnpjData.nomeFantasia} </p>
-                <p><strong>Porte:</strong> ${cnpjData.porte}</p>
-                <p><strong>Natureza Jurídica:</strong> ${cnpjData.naturezaJuridica}</p>
-                <p><strong>Situação Cadastral:</strong> ${cnpjData.situacaoCadastral}</p>
-                <p><strong>Logradouro:</strong> ${cnpjData.logradouro}</p>
-                <p><strong>Bairro:</strong> ${cnpjData.bairro}</p>
-                <p><strong>CEP:</strong> ${cnpjData.cep}</p>
-                <p><strong>Telefone:</strong> ${cnpjData.telefone}</p>
-                <p><strong>Email:</strong> ${cnpjData.email}</p>
-                <p><strong>Inscrição Estadual:</strong> ${cnpjData.inscricaoEstadual}</p>
-            `;
         })
+        
+        
         .catch((error) => {
             console.error(error);
             const resultContainer = document.getElementById('cnpjResult');

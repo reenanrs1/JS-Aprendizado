@@ -17,7 +17,7 @@ document.getElementById('ncmForm').addEventListener('submit', function(event) {
                         throw new Error(`Muitas requisições: ${errorBody.detalhes}`);
                     });
                 } else {
-                    throw new Error('Erro na consulta');
+                    throw new Error('Erro na consulta, n');
                 }
             }
             return response.json();
