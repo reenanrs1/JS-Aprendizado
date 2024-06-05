@@ -1,13 +1,13 @@
 document.getElementById('ncmForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Limpa os resultados anteriores
+    
     document.getElementById('ncmResult').innerHTML = '';
     document.getElementById('cnpjResult').innerHTML = '';
     document.getElementById('cepResult').innerHTML = '';
 
     const ncm = document.getElementById('ncmInput').value;
-    const url = `https://brasilapi.com.br/api/ncm/v1/${ncm}`; // Substitua pela URL correta para consultar o NCM
+    const url = `https://brasilapi.com.br/api/ncm/v1/${ncm}`;
 
     fetch(url)
         .then((response) => {
@@ -27,14 +27,12 @@ document.getElementById('ncmForm').addEventListener('submit', function(event) {
                 throw new Error('NCM Invalido ou Vencido');
             }
 
-            // Tratamento dos dados recebidos
             const ncmData = {
                 codigo: jsonBody.codigo || 'N/A',
                 descricao: jsonBody.descricao || 'N/A',
                 inicio: jsonBody.data_inicio || 'N/A',
 
             };
-            // Apresentação dos dados tratados
             const resultContainer = document.getElementById('ncmResult');
             resultContainer.innerHTML = `
                 <h3>Resultados da Consulta de NCM</h3>

@@ -1,7 +1,7 @@
 document.getElementById('cepForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Limpa os resultados anteriores
+
     document.getElementById('cepResult').innerHTML = '';
     document.getElementById('cnpjResult').innerHTML = '';
     document.getElementById('ncmResult').innerHTML = '';
@@ -27,7 +27,7 @@ document.getElementById('cepForm').addEventListener('submit', function(event) {
                 throw new Error('CEP não encontrado');
             }
 
-            // Tratamento dos dados recebidos
+           
             const cepData = {
                 cep: jsonBody.cep || 'N/A',
                 logradouro: jsonBody.logradouro || 'N/A',
@@ -38,7 +38,7 @@ document.getElementById('cepForm').addEventListener('submit', function(event) {
                 ddd: jsonBody.ddd || 'N/A'
             };
 
-            // Apresentação dos dados tratados
+           
             const resultContainer = document.getElementById('cepResult');
             resultContainer.innerHTML = `
                 <h3>Resultados da Consulta de CEP</h3>

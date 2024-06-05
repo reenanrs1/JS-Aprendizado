@@ -22,9 +22,9 @@ document.getElementById('cnpjForm').addEventListener('submit', function(event) {
             }
             return response.json();
         })
-        
+
         .then((jsonBody) => {
-            // Tratamento dos dados recebidos
+            
             const cnpjData = {
                 razaoSocial: jsonBody.razao_social,
                 porte: jsonBody.porte.descricao,
@@ -37,16 +37,25 @@ document.getElementById('cnpjForm').addEventListener('submit', function(event) {
                 cep: jsonBody.estabelecimento.cep,
                 telefone: `(${jsonBody.estabelecimento.ddd1}) ${jsonBody.estabelecimento.telefone1}`,
                 email: jsonBody.estabelecimento.email,
-                inscricaoEstadual: jsonBody.estabelecimento.inscricoes_estaduais.length > 0 ? jsonBody.estabelecimento.inscricoes_estaduais[0].inscricao_estadual : 'N/A'
+                inscricoesEstaduais: 'N/A' 
             };
+        
+            if (jsonBody.estabelecimento.inscricoes_estaduais.length > 0) {
+                
+                cnpjData.inscricoesEstaduais = jsonBody.estabelecimento.inscricoes_estaduais
+                    .map((inscricao) => inscricao.inscricao_estadual)
+                    .join('<br>'); 
+            }
+        
+       
 
-            // Apresentação dos dados tratados
+
             const resultContainer = document.getElementById('cnpjResult');
             resultContainer.innerHTML = `
                 <h3>Resultados da Consulta de CNPJ</h3>
                 <p><strong>CNPJ:</strong> ${cnpjData.cnpj}</p>
                 <p><strong>Razão Social:</strong> ${cnpjData.razaoSocial}</p>
-                <p><strong>Nome Fantasia:</strong> ${cnpjData.nomeFantasia}</p>
+                <p><strong>Nome Fantasia:</strong> ${cnpjData.nomeFantasia} </p>
                 <p><strong>Porte:</strong> ${cnpjData.porte}</p>
                 <p><strong>Natureza Jurídica:</strong> ${cnpjData.naturezaJuridica}</p>
                 <p><strong>Situação Cadastral:</strong> ${cnpjData.situacaoCadastral}</p>
