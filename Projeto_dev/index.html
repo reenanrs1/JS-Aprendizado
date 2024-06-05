@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Utilitários Suporte</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-4">
+  <h1>Utilitários de Consultas</h1>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link btn-custom" href="#" data-bs-toggle="modal" data-bs-target="#cnpjModal">Consulta CNPJ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-custom" href="#" data-bs-toggle="modal" data-bs-target="#ncmModal">Consulta NCM</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-custom" href="#" data-bs-toggle="modal" data-bs-target="#cepModal">Consulta CEP</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Modal para entrada do CNPJ -->
+  <div class="modal fade" id="cnpjModal" tabindex="-1" aria-labelledby="cnpjModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cnpjModalLabel">Consulta CNPJ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="cnpjForm">
+            <div class="mb-3">
+              <label for="cnpjInput" class="form-label">Digite o CNPJ:</label>
+              <input type="text" class="form-control" id="cnpjInput" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Consultar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para entrada do NCM -->
+  <div class="modal fade" id="ncmModal" tabindex="-1" aria-labelledby="ncmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ncmModalLabel">Consulta NCM</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="ncmForm">
+            <div class="mb-3">
+              <label for="ncmInput" class="form-label">Digite o NCM:</label>
+              <input type="text" class="form-control" id="ncmInput" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Consultar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para entrada do CEP -->
+  <div class="modal fade" id="cepModal" tabindex="-1" aria-labelledby="cepModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cepModalLabel">Consulta CEP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="cepForm">
+              <div class="mb-3">
+                <label for="cepInput" class="form-label">Digite o CEP:</label>
+                <input type="text" class="form-control" id="cepInput" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Consultar</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contêiner para exibir os resultados -->
+  <div class="mt-4">
+    <div id="cnpjResult"></div>
+    <div id="ncmResult"></div>
+    <div id="cepResult"></div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="/assets/js/cnpj-consulta.js"></script>
+<script src="/assets/js/ncm-consulta.js"></script>
+<script src="/assets/js/cep-consulta.js"></script>
+</body>
+</html>
