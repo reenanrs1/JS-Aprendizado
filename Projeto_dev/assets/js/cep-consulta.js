@@ -1,10 +1,16 @@
-document.getElementById('cepForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+    const cepForm = document.getElementById('cepForm');
+    const cnpjResult = document.getElementById('cnpjResult');
+    const ncmResult = document.getElementById('ncmResult');
+    const cepResult = document.getElementById('cepResult');
+    const cepModal = new bootstrap.Modal(document.getElementById('cepModal'));
 
+    cepForm.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    document.getElementById('cepResult').innerHTML = '';
-    document.getElementById('cnpjResult').innerHTML = '';
-    document.getElementById('ncmResult').innerHTML = '';
+        cnpjResult.innerHTML = '';
+        ncmResult.innerHTML = '';
+        cepResult.innerHTML = '';
 
     const cep = document.getElementById('cepInput').value;
     const url = `https://viacep.com.br/ws/${cep}/json/`;
@@ -52,11 +58,10 @@ document.getElementById('cepForm').addEventListener('submit', function(event) {
             `;
         })
         .catch((error) => {
-            console.error(error);
-            const resultContainer = document.getElementById('cepResult');
-            resultContainer.innerHTML = `
-                <h3>Erro na Consulta</h3>
-                <p>${error.message}</p>
-            `;
+            cepResult.innerHTML = `<p>Erro: ${error.message}</p>`;
+        })
+        .finally(() => {
+            cepModal.hide();
         });
+});
 });
