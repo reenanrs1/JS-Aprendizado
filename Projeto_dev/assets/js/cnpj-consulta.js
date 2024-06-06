@@ -4,16 +4,42 @@ document.addEventListener('DOMContentLoaded', function() {
     const ncmResult = document.getElementById('ncmResult');
     const cepResult = document.getElementById('cepResult');
     const cnpjModal = new bootstrap.Modal(document.getElementById('cnpjModal'));
+    const cnpjInput = document.getElementById('cnpjInput');
+    
+    const openModalBtns = document.querySelectorAll('[data-bs-target="#cnpjModal"]');
+    openModalBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            cnpjModal.show();
+            setTimeout(() => {
+                cnpjInput.focus();
+            }, 500); 
+        });
+    });
 
+    function limparCnpj(cnpj){
+        return cnpj.replace(/[^0-9]/g, '');
+    };
+
+    function validarCnpj(cnpj){
+        if (cnpj.length !==14){
+            return false;
+        }
+        return true;
+    };
+    
     cnpjForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        
-        cnpjResult.innerHTML = '';
-        ncmResult.innerHTML = '';
-        cepResult.innerHTML = '';
-
-        const cnpj = document.getElementById('cnpjInput').value;
+    
+    cnpjResult.innerHTML = '';
+    ncmResult.innerHTML = '';
+    cepResult.innerHTML = '';
+    
+        const cnpj = limparCnpj(cnpjInput.value);
+        if (!validarCnpj(cnpj)){
+            cnpjResult.innerHTML = 'CNPJ inválido, Por favor insira um CNPJ válido';
+            return;
+        }
         const url = `https://publica.cnpj.ws/cnpj/${cnpj}`;
 
         fetch(url)
@@ -87,6 +113,12 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .finally(() => {
                 cnpjModal.hide();
+                limpezaInput();
+                
             });
     });
+    function limpezaInput(){
+        cnpjInput.value = '';
+    }
+
 });

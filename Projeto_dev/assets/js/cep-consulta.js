@@ -4,6 +4,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const ncmResult = document.getElementById('ncmResult');
     const cepResult = document.getElementById('cepResult');
     const cepModal = new bootstrap.Modal(document.getElementById('cepModal'));
+    const cepInput = document.getElementById('cepInput');
+
+    const openModalBtns = document.querySelectorAll('[data-bs-target="#cepModal"]');
+    openModalBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            cepModal.show();
+            setTimeout(() => {
+                cepInput.focus();
+            }, 500); 
+        });
+    });
+
+    function limparCep(cep){
+        return cep.replace(/[^0-9]/g, '');
+    };
+
+    function validarCep(cep){
+        if (cep.length !==8){
+            return false;
+        }
+        return true;
+    };
+
 
     cepForm.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -12,7 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
         ncmResult.innerHTML = '';
         cepResult.innerHTML = '';
 
-    const cep = document.getElementById('cepInput').value;
+    const cep = limparCep(cepInput.value);
+    if (!validarCep(cep)){
+        cnpjResult.innerHTML = 'CEP inválido, Por favor insira um CEP válido';
+        return;
+    }
     const url = `https://viacep.com.br/ws/${cep}/json/`;
 
     fetch(url)
@@ -62,6 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .finally(() => {
             cepModal.hide();
+            limpezaCEP();
         });
-});
+    });
+    function limpezaCEP(){
+        cepInput.value = '';
+    }
 });

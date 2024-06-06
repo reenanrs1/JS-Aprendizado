@@ -4,16 +4,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const ncmResult = document.getElementById('ncmResult');
     const cepResult = document.getElementById('cepResult');
     const ncmModal = new bootstrap.Modal(document.getElementById('ncmModal'));
+    const ncmInput = document.getElementById('ncmInput');
+
+
+    const openModalBtns = document.querySelectorAll('[data-bs-target="#ncmModal"]');
+    openModalBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            ncmModal.show();
+            setTimeout(() => {
+                ncmInput.focus();
+            }, 500); 
+        });
+    });
+
+
+        
+    function limparNcm(ncm){
+        return ncm.replace(/[^0-9]/g, '');
+    }
+    function validarNcm(ncm){
+        if (ncm.length !== 8){       
+            return false;
+        }
+        return true;
+        
+    }
+
 
     ncmForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        
         cnpjResult.innerHTML = '';
         ncmResult.innerHTML = '';
         cepResult.innerHTML = '';
 
-        const ncm = document.getElementById('ncmInput').value;
+        const ncm = limparNcm(ncmInput.value);
+        if (!validarNcm(ncm)){
+            ncmResult.innerHTML = 'NCM inválido, Por favor insira um NCM válido';
+            return;
+        }
         const url = `https://brasilapi.com.br/api/ncm/v1/${ncm}`;
 
         fetch(url)
@@ -54,7 +83,11 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .finally(() => {
             ncmModal.hide();
+            limpezaNcm();
         });
         
     });
+    function limpezaNcm(){
+        ncmInput.value = '';
+    }
 });
