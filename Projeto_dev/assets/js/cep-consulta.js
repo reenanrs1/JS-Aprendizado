@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     openModalBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             cepModal.show();
+            ncmResult.innerHTML = '';
+            cepResult.innerHTML = '';
+            cnpjResult.innerHTML = '';
             setTimeout(() => {
                 cepInput.focus();
             }, 500); 
@@ -31,9 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     cepForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        cnpjResult.innerHTML = '';
-        ncmResult.innerHTML = '';
-        cepResult.innerHTML = '';
+
 
     const cep = limparCep(cepInput.value);
     if (!validarCep(cep)){

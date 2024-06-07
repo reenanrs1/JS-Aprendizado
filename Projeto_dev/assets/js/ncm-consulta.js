@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     openModalBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             ncmModal.show();
+            ncmResult.innerHTML = '';
+            cepResult.innerHTML = '';
+            cnpjResult.innerHTML = '';
             setTimeout(() => {
                 ncmInput.focus();
             }, 500); 
@@ -34,9 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     ncmForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        cnpjResult.innerHTML = '';
-        ncmResult.innerHTML = '';
-        cepResult.innerHTML = '';
 
         const ncm = limparNcm(ncmInput.value);
         if (!validarNcm(ncm)){

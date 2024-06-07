@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     openModalBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             cnpjModal.show();
+            ncmResult.innerHTML = '';
+            cepResult.innerHTML = '';
+            cnpjResult.innerHTML = '';
             setTimeout(() => {
                 cnpjInput.focus();
             }, 500); 
@@ -31,9 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
 
     
-    cnpjResult.innerHTML = '';
-    ncmResult.innerHTML = '';
-    cepResult.innerHTML = '';
+
     
         const cnpj = limparCnpj(cnpjInput.value);
         if (!validarCnpj(cnpj)){
