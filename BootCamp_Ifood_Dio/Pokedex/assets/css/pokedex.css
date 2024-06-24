@@ -62,6 +62,14 @@
     transform: rotateY(180deg);
     color: #fff;
     font-size: 1rem;
+    align-items: flex-start !important;
+    flex-direction: column;
+}
+
+.abilites {
+    color: #fff;
+    font-size: 1rem;
+    flex-direction: column;
 }
 
 .flip .card.flip-card {
@@ -117,6 +125,7 @@
     filter: brightness(1.1);
     text-align: center;
 }
+
 
 .pokemon .detail img {
     max-width: 100%;

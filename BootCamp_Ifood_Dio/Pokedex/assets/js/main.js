@@ -21,7 +21,13 @@ const pokemonList = document.getElementById('pokemonList');
                                 </li>
                             </div>
                             <div class="face back ${pokemon.type}">
-                                FUNDO
+                                    <span class="base_experience">Qtd Experiencia: ${pokemon.base_experience}</span>
+                                    <span class="height">Tamanho: ${pokemon.height}</span>
+                                    <p>Habilidades: </p>
+                                    <ol class="abilites">
+                                        ${pokemon.abilities.map((ability) => `<ol class="ability  ${ability}"> ${ability}</ol>`).join('')}
+                                    </ol>   
+                                  
                             </div>
                         </div>
                     </div>
