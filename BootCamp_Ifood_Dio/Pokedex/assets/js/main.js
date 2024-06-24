@@ -1,7 +1,26 @@
 const pokemonList = document.getElementById('pokemonList');
-        const loadMoreButton = document.getElementById('loadMoreButton');
-        const limit = 5;
-        let offset = 0;
+const loadMoreButton = document.getElementById('loadMoreButton');
+const limit = 5;
+let offset = 0;
+
+
+
+        function flip() {
+            const cards = document.querySelectorAll('.flip');
+            cards.forEach((card) => {
+                card.addEventListener("click", () => {
+                    card.querySelector('.card').classList.toggle("flip-card");
+                });
+            });
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+        
+        function capitalizeWords(string) {
+            return string.split(' ').map(capitalizeFirstLetter).join(' ');
+        }
 
         function loadPokemonsItens(offset, limit) {
             pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
@@ -21,30 +40,26 @@ const pokemonList = document.getElementById('pokemonList');
                                 </li>
                             </div>
                             <div class="face back ${pokemon.type}">
-                                    <span class="base_experience">Qtd Experiencia: ${pokemon.base_experience}</span>
-                                    <span class="height">Tamanho: ${pokemon.height}</span>
-                                    <p>Habilidades: </p>
-                                    <ol class="abilites">
-                                        ${pokemon.abilities.map((ability) => `<ol class="ability  ${ability}"> ${ability}</ol>`).join('')}
-                                    </ol>   
-                                  
+                            <div class="back-content">
+                                <span class="base_experience"> Experiência: ${pokemon.base_experience}</span>
+                                <span class="height">Tamanho: ${pokemon.height}</span><br>
+                                Habilidades:
+                                <div class="abilities">
+                                    ${pokemon.abilities.map((ability) => `<li class="ability">${capitalizeWords(ability)}</li>`).join('')}
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
                 `).join('');
                 pokemonList.innerHTML += newHtml;
-
-                pokemons.forEach((_, index) => {
-                    const card = document.getElementById(`card-${offset + index}`);
-                    card.addEventListener("click", () => {
-                        card.querySelector('.card').classList.toggle("flip-card");
-                    });
-                });
+                flip();
             });
         }
+    
 
         loadPokemonsItens(offset, limit);
-
+        
         loadMoreButton.addEventListener('click', () => {
             offset += limit;
             loadPokemonsItens(offset, limit);

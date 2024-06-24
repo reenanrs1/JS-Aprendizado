@@ -8,6 +8,5 @@ class Pokemon{
     height;
     abilities;
     abilities = [];
-    
 }
 

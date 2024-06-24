@@ -8,24 +8,59 @@
 }
 
 /* Estilos para os tipos de Pokémon */
-.normal { background-color: #a6a877; }
-.grass { background-color: #77c850; }
-.fire { background-color: #ee7f30; }
-.water { background-color: #678fee; }
-.electric { background-color: #f7cf2e; }
-.ice { background-color: #98d5d7; }
-.ground { background-color: #dfbf69; }
-.flying { background-color: #a98ff0; }
-.poison { background-color: #a040a0; }
-.fighting { background-color: #bf3029; }
-.psychic { background-color: #f65687; }
-.dark { background-color: #725847; }
-.rock { background-color: #b8a137; }
-.bug { background-color: #a8b720; }
-.ghost { background-color: #6e5896; }
-.steel { background-color: #b9b7cf; }
-.dragon { background-color: #6f38f6; }
-.fairy { background-color: #f9aec7; }
+.normal { 
+    background-color: #a6a877; 
+}
+.grass {
+     background-color: #77c850; 
+    }
+.fire {
+     background-color: #ee7f30; 
+    }
+.water {
+     background-color: #678fee; 
+    }
+.electric {
+     background-color: #f7cf2e; 
+    }
+.ice {
+     background-color: #98d5d7;
+     }
+.ground {
+     background-color: #dfbf69;
+     }
+.flying {
+     background-color: #a98ff0; 
+    }
+.poison {
+     background-color: #a040a0; 
+    }
+.fighting {
+     background-color: #bf3029; 
+    }
+.psychic {
+     background-color: #f65687; }
+.dark {
+     background-color: #725847;
+     }
+.rock { 
+    background-color: #b8a137; 
+}
+.bug {
+     background-color: #a8b720; 
+    }
+.ghost {
+     background-color: #6e5896; 
+    }
+.steel {
+     background-color: #b9b7cf; 
+    }
+.dragon { 
+    background-color: #6f38f6; 
+}
+.fairy {
+     background-color: #f9aec7; 
+    }
 
 /* Estilos para o flip dos cartões */
 .flip {
@@ -47,11 +82,11 @@
     backface-visibility: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     border-radius: 1rem;
     padding: 1rem;
     box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .flip .card .front {
@@ -62,14 +97,29 @@
     transform: rotateY(180deg);
     color: #fff;
     font-size: 1rem;
-    align-items: flex-start !important;
-    flex-direction: column;
+    display: flex;
+    
 }
 
-.abilites {
+.flip .card .back .back-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-transform: capitalize;
+    color: #000;
+
+
+}
+
+.abilities {
     color: #fff;
     font-size: 1rem;
-    flex-direction: column;
+    padding-left: 0rem;
+    text-transform: capitalize;
 }
 
 .flip .card.flip-card {
