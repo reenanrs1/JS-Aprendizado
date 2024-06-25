@@ -22,3 +22,12 @@ if (nome){
 }else{
     console.log('Não preenchido');
 }
+
+const x = {
+    nome: 'João',
+    idade: 20
+}
+x['nome'] = 'Renan'
+
+console.log(x.nome)
+console.log(x['nome'])
