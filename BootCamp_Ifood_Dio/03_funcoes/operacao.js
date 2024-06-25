@@ -13,3 +13,7 @@ function calculadora(x, operacao , y){
 }
 
 calculadora(10,adicao,20)
+
+document.getElementById('btn1').addEventListener('click',() =>{
+    console.log('Clicou')
+})
