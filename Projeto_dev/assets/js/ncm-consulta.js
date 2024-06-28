@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             throw new Error(`Muitas requisições: ${errorBody.detalhes}`);
                         });
                     } else {
-                        throw new Error('Erro na consulta');
+                        throw new Error('NCM Invalido ou Vencido');
                     }
                 }
                 return response.json();
