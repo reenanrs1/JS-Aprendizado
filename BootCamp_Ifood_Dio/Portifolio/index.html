@@ -7,28 +7,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portifólio Renan R Santos</title>
 
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" 
     integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/assets/css/header.css"/>
+    <link rel="stylesheet" href="assets/css/header.css"/>
+    <link rel="stylesheet" href="assets/css/global.css">
 
 </head>
 <body>
-
-    <header>
-        <img src="/assets/img/minhafoto.jpeg" alt="Foto Renan">
-        
-        <h1>Olá, eu sou Renan R Santos</h1>
-
-        <p>Desenvolvedor JR</p>
-        <p>Mogi Mirim SP</p>
-        <p>(19)99785-1431</p>
-        <p>renan.victor325@outlook.com</p>
-        
+    <div class="main"> 
+        <header class ="header">
+            <img src="/assets/img/minhafoto.jpeg" alt="Foto Renan" class="photo">
+            
+            <h1 class = "title"><div id="textopag">
+                <div id="typed-output" class="txt-animado">
+                  <span></span>
+                </div>
+              </div>
+            </h1>
+            
+            <div class="information">
+                <p class ='profile'>Desenvolvedor JR</p>
+                <p class ='location'>Mogi Mirim SP</p>
+                <p class ='whatsapp'>(19)99785-1431</p>
+                <p class ='email'>renan.victor325@outlook.com</p>
+            </div>
+    </div>     
     </header>
 
+    <section class="acordeon">
+        <button class="trigger">
+            Idiomas
+        </button>
+        <div class="content">
+            <ul>
+                <li>Português Nativo</li>
+                <li>Ingles Básico</li>
+            </ul>
+        </div>
+    </section>
 
 
+<script src="assets/js/main.js"></script>
     
 </body>
 </html>
