@@ -46,6 +46,10 @@
     
 }
 
+.information a{
+    color: #fff ;
+}
+
 .information p::before{
     content: '';
     display: inline-block;

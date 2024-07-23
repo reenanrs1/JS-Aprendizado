@@ -12,6 +12,14 @@ body{
     color: #fff;
 }
 
+a {
+    color: #fff;
+    text-decoration: none;/* faz com que não tenha o sublinhado no link*/
+}
+
+a:hover {
+    text-decoration: underline;/* faz aparecer o sublinhado quando o mouse é posto em cima*/
+}
 
 .main{
     margin: 1rem;
