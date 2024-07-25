@@ -25,6 +25,13 @@
     color: #fff;
     border: none;
 }
+
+.acordeon .trigger h2{
+    font-size: 1.5rem;
+    margin: 0;   
+    text-align: start; 
+}
+
 .acordeon .trigger:hover {
     cursor: pointer;
 }
