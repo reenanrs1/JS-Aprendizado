@@ -9,27 +9,27 @@
     "hardSkills": [
       {
         "name": "CSS3",
-        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/css.png?raw=true"
+        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/css.png"
       },
       {
         "name": "JS",
-        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/js.png?raw=true"
+        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/js.png"
       },
       {
         "name": "HTML",
-        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/html.png?raw=true"
+        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/html.png"
       },
       {
         "name": "Python",
-        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/python.png?raw=true"
+        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/python.png"
       },
       {
         "name": "MySql",
-        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/mysql.png?raw=true"
+        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/mysql.png"
       },
       {
         "name": "VSCode",
-        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/vscode.png?raw=true"
+        "logo": "https://github.com/reenanrs1/JS-Aprendizado/blob/main/BootCamp_Ifood_Dio/Portifolio/data/vscode.png"
       }
     ],
     "softSkills": [
