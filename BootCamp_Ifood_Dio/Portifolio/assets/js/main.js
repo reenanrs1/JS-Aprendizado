@@ -1,36 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const phrases = [
-        "Olá! Eu sou o Renan Santos",
-        "Estou iniciando minha carreira como Desenvolvedor!",
-        "E estou à busca de uma oportunidade para ingressar na área!"
-    ];
 
-    const outputElement = document.getElementById('typed-output');
-    var index = 0;
-    var charIndex = 0;
+function updateProfileInfo(profileData) {
+    const photo = document.getElementById('profile.photo')
+    photo.src = profileData.photo
+    photo.alt = profileData.photo
 
-    function type() {
-        outputElement.textContent += phrases[index][charIndex];
-        charIndex++;
+    const job = document.getElementById('profile.job')
+    job.innerText = profileData.job
 
-        if (charIndex < phrases[index].length) {
-            setTimeout(type, 50);
-        } else {
-            setTimeout(erase, 1000);
-        }
-    }
+    const location = document.getElementById('profile.location')
+    location.innerText = profileData.location
 
-    function erase() {
-        if (charIndex > 0) {
-            outputElement.textContent = phrases[index].substring(0, charIndex - 1);
-            charIndex--;
+    const phone = document.getElementById('profile.phone')
+    phone.innerText = profileData.phone
+    phone.href = `tel:${profileData.phone}`
 
-            setTimeout(erase, 50);
-        } else {
-            index = (index + 1) % phrases.length;
-            setTimeout(type, 500);
-        }
-    }
+    const email = document.getElementById('profile.email')
+    email.innerText = profileData.email
+    email.href =`mailto:${profileData.email}`
+}
 
-    type();
-});
+
+function updateSoftSkills(profileData) {
+    const softSkills = document.getElementById('profile.skills.softSkills')
+    softSkills.innerHTML = profileData.skills.softSkills.map(skill =>`<li>${skill}</li>`).join('')
+    
+}
+
+(async () => {
+    const profileData = await fetchProfileData()
+    updateProfileInfo(profileData)
+    updateSoftSkills(profileData)
+})()
