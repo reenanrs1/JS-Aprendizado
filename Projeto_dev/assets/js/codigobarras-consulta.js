@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch((error) => {
                 console.error(`Erro: ${error.message}`);
-                codigoBarrasResult.innerHTML = <p>${error.message}</p>;
+                codigoBarrasResult.innerHTML = `<p>${error.message}</p>`;
             })
             .finally(() => {
                 // Verifica se o modal está aberto antes de tentar fechá-lo
