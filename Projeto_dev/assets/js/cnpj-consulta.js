@@ -78,12 +78,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         naturezaJuridica: jsonBody.natureza_juridica.descricao,
                         cnpj: estabelecimento.cnpj,
                         nomeFantasia: (estabelecimento.nome_fantasia !== null && estabelecimento.nome_fantasia !== '') ? estabelecimento.nome_fantasia : 'Não Possui nome fantasia',
-                        situacaoCadastral: estabelecimento.situacao_cadastral,
-                        logradouro: `${estabelecimento.tipo_logradouro} ${estabelecimento.logradouro}, ${estabelecimento.numero}`,
-                        bairro: estabelecimento.bairro,
-                        cep: estabelecimento.cep,
-                        telefone: `(${estabelecimento.ddd1}) ${estabelecimento.telefone1}`,
-                        email: estabelecimento.email,
+                        situacaoCadastral: (estabelecimento.situacao_cadastral !== null && estabelecimento.situacao_cadastral !== '') ? estabelecimento.situacao_cadastral: 'Não possui situação cadastral',
+                        logradouro: `${estabelecimento.tipo_logradouro !== null && estabelecimento.tipo_logradouro !=='' ? estabelecimento.tipo_logradouro: 'Não possui tipo de logradouro.'} ,
+                        
+                        ${estabelecimento.logradouro !== null && estabelecimento.logradouro !=='' ? estabelecimento.logradouro: 'Não possui um logradouro.'} , 
+                        
+                        ${estabelecimento.numero !== null & estabelecimento.numero !=='' ? estabelecimento.numero: 'Não possui numero.'}`,
+
+                        bairro: estabelecimento.bairro !== null && estabelecimento.bairro !=='' ? estabelecimento.bairro : 'Não possui bairro',
+                        cep: estabelecimento.cep !== null && estabelecimento.cep !== '' ? estabelecimento.cep :'Não possui CEP',
+
+                        telefone: `(${estabelecimento.ddd1 !== null && estabelecimento.ddd1 !== '' ? estabelecimento.ddd1: 'Não possui DD.'}) 
+                        ${estabelecimento.telefone1 !== null && estabelecimento.telefone1 !== '' ? estabelecimento.telefone1: 'Não possui telefone.'}`,
+
+                        email: estabelecimento.email !== null && estabelecimento.email !== '' ? estabelecimento.email :'Nao possui email',
                         inscricoesEstaduais: 'N/A' 
                     };
 
