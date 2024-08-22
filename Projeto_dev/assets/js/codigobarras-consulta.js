@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function validarEAN13(codigo) {
         return new Promise((resolve, reject) => {
             if (codigo.length !== 13 || !/^\d+$/.test(codigo)) {
-                return reject(new Error("Código de barras inválido."));
+                return reject(new Error(`Código de barras ${codigo} é inválido, deve ser 13 digitos.`));
             }
 
             const codigoSemDigito = codigo.slice(0, 12);
