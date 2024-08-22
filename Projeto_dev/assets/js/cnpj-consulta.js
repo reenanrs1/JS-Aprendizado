@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const cnpjResult = document.getElementById('cnpjResult');
     const ncmResult = document.getElementById('ncmResult');
     const cepResult = document.getElementById('cepResult');
+    const codigoBarrasResult = document.getElementById('codigoBarrasResult');
     const cnpjModal = new bootstrap.Modal(document.getElementById('cnpjModal'));
+    const loadingMessage = document.getElementById('loadingMessage');
     const cnpjInput = document.getElementById('cnpjInput');
     
     const openModalBtns = document.querySelectorAll('[data-bs-target="#cnpjModal"]');
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ncmResult.innerHTML = '';
             cepResult.innerHTML = '';
             cnpjResult.innerHTML = '';
+            codigoBarrasResult.innerHTML = '';
             setTimeout(() => {
                 cnpjInput.focus();
             }, 500); 
@@ -39,8 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const cnpj = limparCnpj(cnpjInput.value);
         if (!validarCnpj(cnpj)){
             cnpjResult.innerHTML = 'CNPJ inválido, Por favor insira um CNPJ válido';
+            if (cnpjModal._isShown) {
+                cnpjModal.hide();
+            }
+            limpezaCnpj()
             return;
         }
+
+        loadingMessage.style.display = 'block';
+        
         const url = `https://publica.cnpj.ws/cnpj/${cnpj}`;
 
         fetch(url)
@@ -113,12 +123,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 cnpjResult.innerHTML = `<p>Erro: ${error.message}</p>`;
             })
             .finally(() => {
+                loadingMessage.style.display = 'none';
                 cnpjModal.hide();
-                limpezaInput();
-                
+                limpezaCnpj();
+   
             });
     });
-    function limpezaInput(){
+    function limpezaCnpj(){
         cnpjInput.value = '';
     }
 

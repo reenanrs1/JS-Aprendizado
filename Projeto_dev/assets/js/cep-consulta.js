@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const cnpjResult = document.getElementById('cnpjResult');
     const ncmResult = document.getElementById('ncmResult');
     const cepResult = document.getElementById('cepResult');
+    const codigoBarrasResult = document.getElementById('codigoBarrasResult');
     const cepModal = new bootstrap.Modal(document.getElementById('cepModal'));
+    const loadingMessage = document.getElementById('loadingMessage');
     const cepInput = document.getElementById('cepInput');
 
     const openModalBtns = document.querySelectorAll('[data-bs-target="#cepModal"]');
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ncmResult.innerHTML = '';
             cepResult.innerHTML = '';
             cnpjResult.innerHTML = '';
+            codigoBarrasResult.innerHTML = '';
             setTimeout(() => {
                 cepInput.focus();
             }, 500); 
@@ -38,9 +41,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const cep = limparCep(cepInput.value);
     if (!validarCep(cep)){
-        cnpjResult.innerHTML = 'CEP inválido, Por favor insira um CEP válido';
+        cepResult.innerHTML = 'CEP inválido, Por favor insira um CEP válido';
+        if (cepModal._isShown) {
+            cepModal.hide();
+        }
+        limpezaCEP();
         return;
     }
+    loadingMessage.style.display = 'block';
     const url = `https://viacep.com.br/ws/${cep}/json/`;
 
     fetch(url)
@@ -89,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cepResult.innerHTML = `<p>Erro: ${error.message}</p>`;
         })
         .finally(() => {
+            loadingMessage.style.display = 'none';
             cepModal.hide();
             limpezaCEP();
         });

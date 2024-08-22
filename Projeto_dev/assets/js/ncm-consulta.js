@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const cnpjResult = document.getElementById('cnpjResult');
     const ncmResult = document.getElementById('ncmResult');
     const cepResult = document.getElementById('cepResult');
+    const codigoBarrasResult = document.getElementById('codigoBarrasResult');
     const ncmModal = new bootstrap.Modal(document.getElementById('ncmModal'));
+    const loadingMessage = document.getElementById('loadingMessage');
     const ncmInput = document.getElementById('ncmInput');
 
 
@@ -14,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ncmResult.innerHTML = '';
             cepResult.innerHTML = '';
             cnpjResult.innerHTML = '';
+            codigoBarrasResult.innerHTML = '';
             setTimeout(() => {
                 ncmInput.focus();
             }, 500); 
@@ -41,8 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const ncm = limparNcm(ncmInput.value);
         if (!validarNcm(ncm)){
             ncmResult.innerHTML = 'NCM inválido, Por favor insira um NCM válido';
+            if (ncmModal._isShown) {
+                ncmModal.hide();
+            }
+            limpezaNcm()
             return;
         }
+        loadingMessage.style.display = 'block';
         const url = `https://brasilapi.com.br/api/ncm/v1/${ncm}`;
 
         fetch(url)
@@ -82,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ncmResult.innerHTML = `<p>Erro: ${error.message}</p>`;
         })
         .finally(() => {
+            loadingMessage.style.display = 'none';
             ncmModal.hide();
             limpezaNcm();
         });

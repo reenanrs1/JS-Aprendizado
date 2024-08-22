@@ -32,13 +32,16 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link btn-custom" href="#" data-bs-toggle="modal" data-bs-target="">Breve Validador de Codigo de Barras</a>
+            <a class="nav-link btn-custom" href="#" data-bs-toggle="modal" data-bs-target="#codigoBarrasModal">Validador de Codigo de Barras</a>
         </li>
 
       </ul>
     </div>
   </nav>
 
+  <div id="loadingMessage" style="display: none;">
+    <p>Aguarde, realizando a consulta...</p>
+  </div>
   
   <div class="modal fade" id="cnpjModal" tabindex="-1" aria-labelledby="cnpjModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -102,11 +105,32 @@
     </div>
   </div>
 
+  <div class="modal fade" id="codigoBarrasModal" tabindex="-1" aria-labelledby="codigoBarrasModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="codigoBarrasModalLabel">Consulta Codigo de Barras</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="codigoBarrasForm">
+              <div class="mb-3">
+                <label for="codigoBarrasInput" class="form-label">Digite o Codigo de Barras:</label>
+                <input type="text" class="form-control" id="codigoBarrasInput" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Consultar</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   
   <div class="mt-4">
     <div id="cnpjResult"></div>
     <div id="ncmResult"></div>
     <div id="cepResult"></div>
+    <div id="codigoBarrasResult"></div>
   </div>
 </div>
 
@@ -114,5 +138,6 @@
 <script src="/assets/js/cnpj-consulta.js"></script>
 <script src="/assets/js/ncm-consulta.js"></script>
 <script src="/assets/js/cep-consulta.js"></script>
+<script src="/assets/js/codigobarras-consulta.js"></script>
 </body>
 </html>
