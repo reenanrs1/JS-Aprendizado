@@ -49,6 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     loadingMessage.style.display = 'block';
+        if (cepModal._element.classList.contains('show')) {
+            cepModal.hide();
+        }
     const url = `https://viacep.com.br/ws/${cep}/json/`;
 
     fetch(url)
@@ -100,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loadingMessage.style.display = 'none';
             cepModal.hide();
             limpezaCEP();
+            
         });
     });
     function limpezaCEP(){

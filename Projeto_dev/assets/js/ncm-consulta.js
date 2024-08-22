@@ -51,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         loadingMessage.style.display = 'block';
+        if (ncmModal._element.classList.contains('show')) {
+            ncmModal.hide();
+        }
         const url = `https://brasilapi.com.br/api/ncm/v1/${ncm}`;
 
         fetch(url)

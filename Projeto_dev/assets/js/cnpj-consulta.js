@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         loadingMessage.style.display = 'block';
+        if (cnpjModal._element.classList.contains('show')) {
+            cnpjModal.hide();
+        }
         
         const url = `https://publica.cnpj.ws/cnpj/${cnpj}`;
 
