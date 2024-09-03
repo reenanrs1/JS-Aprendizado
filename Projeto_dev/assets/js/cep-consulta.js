@@ -32,11 +32,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return true;
     };
-
-
+    
+    function generatePDF() {
+        const element = document.getElementById('cepResult');
+        const savePdfBtn = document.getElementById('savePdfBtn');
+    
+        // Oculta o botão de salvar antes de gerar o PDF
+        savePdfBtn.style.display = 'none';
+    
+        const opt = {
+            margin:       1,
+            filename:     'consultacep.pdf',
+            image:        { type: 'jpeg', quality: 1.0 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+    
+        html2pdf().from(element).set(opt).save().then(function() {
+            // Mostra o botão novamente após o PDF ser salvo
+            savePdfBtn.style.display = 'block';
+        });
+    }
+    
     cepForm.addEventListener('submit', function(event) {
         event.preventDefault();
-
+        
 
 
     const cep = limparCep(cepInput.value);
@@ -82,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ibge: jsonBody.ibge || 'N/A',
                 ddd: jsonBody.ddd || 'N/A'
             };
+            
 
            
             const resultContainer = document.getElementById('cepResult');
@@ -94,8 +115,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p><strong>UF:</strong> ${cepData.uf}</p>
                 <p><strong>IBGE:</strong> ${cepData.ibge}</p>
                 <p><strong>DDD:</strong> ${cepData.ddd}</p>
+                
+                
             `;
+            const savePdfBtn = document.createElement('button');
+            savePdfBtn.id = 'savePdfBtn';
+            savePdfBtn.className = 'btn btn-primary mt-3';
+            savePdfBtn.textContent = 'Salvar em PDF';
+            resultContainer.appendChild(savePdfBtn);
+
+            // Adiciona o event listener após o botão ser adicionado ao DOM
+            savePdfBtn.addEventListener('click', generatePDF);
+            
         })
+        
         .catch((error) => {
             cepResult.innerHTML = `<p>Erro: ${error.message}</p>`;
         })

@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
         
     }
+    function generatePDF() {
+        const element = document.getElementById('content');
+        html2pdf().from(element).save();
+    }
 
 
     ncmForm.addEventListener('submit', function(event) {
@@ -86,8 +90,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p><strong>Código:</strong> ${ncmData.codigo}</p>
                     <p><strong>Descrição:</strong> ${ncmData.descricao}</p>
                     <p><strong>Inicio:</strong> ${ncmData.inicio}</p>
+                    <button id="savePdfBtn" class="btn btn-primary mt-3">Salvar PDF</button>
                 
             `;
+            const savePdfBtn = document.getElementById('savePdfBtn');
+                savePdfBtn.addEventListener('click', generatePDF);
         })
         .catch((error) => {
             ncmResult.innerHTML = `<p>Erro: ${error.message}</p>`;
