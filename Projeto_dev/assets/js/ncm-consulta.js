@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch((error) => {
             ncmResult.innerHTML = `<p>Erro: ${error.message}</p>`;
             if (error.message === 'Failed to fetch') {
-                ncmResult.innerHTML = '<p>Erro: Site de consulta está OF-LINE.</p>';
+                ncmResult.innerHTML = '<p>Erro: Site de consulta está OFFF-LINE.</p>';
             }
         })
         .finally(() => {
