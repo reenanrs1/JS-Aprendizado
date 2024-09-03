@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loadingMessage.style.display = 'none';
             ncmModal.hide();
             limpezaNcm();
-        });
+        });1
         
     });
     function limpezaNcm(){
