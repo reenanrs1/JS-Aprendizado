@@ -74,11 +74,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (estabelecimento) {
                     const cnpjData = {
                         razaoSocial: jsonBody.razao_social,
+                        
                         porte: jsonBody.porte.descricao,
+                       
                         naturezaJuridica: jsonBody.natureza_juridica.descricao,
+                        
                         cnpj: estabelecimento.cnpj,
+
+                        mei: jsonBody.simples.mei,
+                        simplesNacional: jsonBody.simples.simples,
+
+                        estado: estabelecimento.estado.nome,
+                        
                         nomeFantasia: (estabelecimento.nome_fantasia !== null && estabelecimento.nome_fantasia !== '') ? estabelecimento.nome_fantasia : 'Não Possui nome fantasia',
+                        
                         situacaoCadastral: (estabelecimento.situacao_cadastral !== null && estabelecimento.situacao_cadastral !== '') ? estabelecimento.situacao_cadastral: 'Não possui situação cadastral',
+                        
                         logradouro: `${estabelecimento.tipo_logradouro !== null && estabelecimento.tipo_logradouro !=='' ? estabelecimento.tipo_logradouro: 'Não possui tipo de logradouro.'} ,
                         
                         ${estabelecimento.logradouro !== null && estabelecimento.logradouro !=='' ? estabelecimento.logradouro: 'Não possui um logradouro.'} , 
@@ -117,11 +128,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p><strong>Razão Social:</strong> ${cnpjData.razaoSocial}</p>
                         <p><strong>Nome Fantasia:</strong> ${cnpjData.nomeFantasia}</p>
                         <p><strong>Porte:</strong> ${cnpjData.porte}</p>
+                        <p><strong>Simples Nacional:</strong> ${cnpjData.simplesNacional}</p>
+                        <p><strong>MEI:</strong> ${cnpjData.mei}</p>
                         <p><strong>Natureza Jurídica:</strong> ${cnpjData.naturezaJuridica}</p>
                         <p><strong>Situação Cadastral:</strong> ${cnpjData.situacaoCadastral}</p>
                         <p><strong>Logradouro:</strong> ${cnpjData.logradouro}</p>
                         <p><strong>Bairro:</strong> ${cnpjData.bairro}</p>
                         <p><strong>CEP:</strong> ${cnpjData.cep}</p>
+                        <p><strong>Estado:</strong> ${cnpjData.estado}</p>
                         <p><strong>Telefone:</strong> ${cnpjData.telefone}</p>
                         <p><strong>Email:</strong> ${cnpjData.email}</p>
                         <p><strong>Inscrições Estaduais:</strong> ${cnpjData.inscricoesEstaduais}</p>
