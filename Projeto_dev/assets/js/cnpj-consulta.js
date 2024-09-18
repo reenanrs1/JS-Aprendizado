@@ -80,9 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         naturezaJuridica: jsonBody.natureza_juridica.descricao,
                         
                         cnpj: estabelecimento.cnpj,
+                        
+                        simplesNacional: `${jsonBody.simples !== null && jsonBody.simples.simples !== null && jsonBody.simples.simples !=='' ? jsonBody.simples.simples: 'Não se enquadra.'}`,
 
-                        mei: jsonBody.simples.mei,
-                        simplesNacional: jsonBody.simples.simples,
+                        mei: `${jsonBody.simples !== null && jsonBody.simples.mei !== null && jsonBody.simples.mei !=='' ? jsonBody.simples.mei: 'Não se enquadra.'}`,
 
                         estado: estabelecimento.estado.nome,
                         
